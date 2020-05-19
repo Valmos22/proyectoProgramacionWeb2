@@ -1,0 +1,64 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<table style="height: 108px;" width="473px">
+    <!---<tbody>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <img src="~/images/PaisIcon.png" alt="" width="151" height="151" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <img src="~/images/DeptoIcon.png" alt="" width="151" height="151" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <img src="~/images/CiudadIcon.png" alt="" width="151" height="151" />
+            </td>
+        </tr>
+    </tbody>-->
+
+    <tbody>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./TemaPages/Index">Crud Temas</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./DocentesPages/Index">Crud Docentes</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./EstudiantesPages/Index">Crud Estudiantes</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./GruposPages/Index">Crud Grupos</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./IntegracionPages/Index">Crud Integracion</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./EntregasPages/Index">Crud Entregas</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

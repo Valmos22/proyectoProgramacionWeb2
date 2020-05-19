@@ -1,0 +1,71 @@
+﻿@page
+@model CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Entrega</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Entrega.Nombre" class="control-label"></label>
+                <input asp-for="Entrega.Nombre" class="form-control" />
+                <span asp-validation-for="Entrega.Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Entrega.NroEntrega" class="control-label"></label>
+                <input asp-for="Entrega.NroEntrega" class="form-control" />
+                <span asp-validation-for="Entrega.NroEntrega" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Entrega.Documento" class="control-label"></label>
+                <input type="file" asp-for="Entrega.Documento" class="form-control" />
+                <span asp-validation-for="Entrega.Documento" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Entrega.GrupoId" class="control-label"></label>
+                <select asp-for="Entrega.GrupoId" class ="form-control" asp-items="ViewBag.GrupoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Entrega.IntegracionId" class="control-label"></label>
+                <select asp-for="Entrega.IntegracionId" class ="form-control" asp-items="ViewBag.IntegracionId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Entrega.FechaEntrega" class="control-label"></label>
+                <input asp-for="Entrega.FechaEntrega" class="form-control" />
+                <span asp-validation-for="Entrega.FechaEntrega" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Entrega.Nota" class="control-label"></label>
+                <input asp-for="Entrega.Nota" class="form-control" />
+                <span asp-validation-for="Entrega.Nota" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Entrega.Active" /> @Html.DisplayNameFor(model => model.Entrega.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

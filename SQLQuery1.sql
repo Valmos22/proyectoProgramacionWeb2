@@ -1,0 +1,1 @@
+﻿ALTER TABLE [dbo].[Tema] ALTER COLUMN Descripcion varchar(100) NULL
