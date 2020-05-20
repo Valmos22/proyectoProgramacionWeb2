@@ -5,6 +5,7 @@
     ViewData["Title"] = "Create";
 }
 
+<div class="arriba">
 <h1>Create</h1>
 
 <h4>Entrega</h4>
@@ -25,20 +26,20 @@
             </div>
 
 
-            <div class="form-group">
-                <label asp-for="Entrega.Documento" class="control-label"></label>
-                <input type="file" asp-for="Entrega.Documento" class="form-control" />
-                <span asp-validation-for="Entrega.Documento" class="text-danger"></span>
-            </div>
+            <!--<div class="form-group">
+        <label asp-for="Entrega.Documento" class="control-label"></label>
+        <input type="file" asp-for="Entrega.Documento" class="form-control" />
+        <span asp-validation-for="Entrega.Documento" class="text-danger"></span>
+    </div>-->
 
 
             <div class="form-group">
                 <label asp-for="Entrega.GrupoId" class="control-label"></label>
-                <select asp-for="Entrega.GrupoId" class ="form-control" asp-items="ViewBag.GrupoId"></select>
+                <select asp-for="Entrega.GrupoId" class="form-control" asp-items="ViewBag.GrupoId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Entrega.IntegracionId" class="control-label"></label>
-                <select asp-for="Entrega.IntegracionId" class ="form-control" asp-items="ViewBag.IntegracionId"></select>
+                <select asp-for="Entrega.IntegracionId" class="form-control" asp-items="ViewBag.IntegracionId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Entrega.FechaEntrega" class="control-label"></label>
@@ -64,6 +65,7 @@
 
 <div>
     <a asp-page="Index">Back to List</a>
+</div>
 </div>
 
 @section Scripts {

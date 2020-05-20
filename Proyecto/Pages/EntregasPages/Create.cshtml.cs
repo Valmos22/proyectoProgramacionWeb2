@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -26,6 +30,10 @@ namespace Proyecto.Pages.EntregasPages
             return Page();
         }
 
+        /*--------------Esta parte es para subir el archivo--------------------*/
+        
+        
+        /*--------------Esta parte es para subir el archivo fin-----------------*/
 
 
         [BindProperty]
@@ -44,6 +52,8 @@ namespace Proyecto.Pages.EntregasPages
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
+
+
         }
 
 
