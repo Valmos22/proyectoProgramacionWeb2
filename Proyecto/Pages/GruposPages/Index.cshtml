@@ -5,64 +5,76 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="arriba">
-<h1>Index</h1>
+    <div class="arriba">
+        <h1>Index</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Grupo[0].Estudiante1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grupo[0].Estudiante2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grupo[0].Estudiante3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grupo[0].Active)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grupo[0].Docente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grupo[0].Tema)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Grupo) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estudiante1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estudiante2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estudiante3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Docente.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tema.Descripcion)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</div>
+        @if (Model.V_crear)
+        {
+            <p>
+                <a asp-page="Create">Create New</a>
+            </p>
+        }
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Grupo[0].Estudiante1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Grupo[0].Estudiante2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Grupo[0].Estudiante3)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Grupo[0].Active)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Grupo[0].Docente)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Grupo[0].Tema)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Grupo)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estudiante1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estudiante2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estudiante3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Active)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Docente.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tema.Descripcion)
+                        </td>
+                        <td>
+                            @if (Model.V_edit)
+                            {
+                                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                            }
+
+                            <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+
+                            @if (Model.V_eliminar)
+                            {
+                                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

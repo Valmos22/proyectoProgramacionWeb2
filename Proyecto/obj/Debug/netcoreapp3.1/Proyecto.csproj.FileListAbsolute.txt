@@ -11,7 +11,6 @@ C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Proyecto.
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Proyecto.TagHelpers.output.cache
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Proyecto.RazorCoreGenerate.cache
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
-C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -195,3 +194,7 @@ C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pag
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\IntegracionPages\Details.cshtml.g.cs
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\IntegracionPages\Edit.cshtml.g.cs
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\IntegracionPages\Index.cshtml.g.cs
+C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\Login.cshtml.g.cs
+C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\Logout.cshtml.g.cs
+C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\InicioPague.cshtml.g.cs
+C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\IndexPage.cshtml.g.cs

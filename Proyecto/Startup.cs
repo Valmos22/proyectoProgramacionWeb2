@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Proyecto.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace Proyecto
 {
@@ -28,9 +30,32 @@ namespace Proyecto
             //services.AddMvc();
 
             services.AddRazorPages();
+            services.AddMvc().AddRazorPagesOptions(
+
+                option => {
+
+                    option.Conventions.AddPageRoute("/InicioPague", "");
+
+                });
 
             services.AddDbContext<ProyectoPDCContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ProyectoPDCContext")));
+
+            services.AddAuthentication(options =>
+            {
+
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
+            }).AddCookie(options =>
+            {
+                options.LoginPath = new PathString("/Login");
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5.0);
+            });
+            services.AddSession();
+            services.AddHttpContextAccessor();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +76,7 @@ namespace Proyecto
             app.UseStaticFiles();
 
             //app.UseMvc();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();

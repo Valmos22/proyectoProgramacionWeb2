@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 namespace Proyecto.Entities
-
 {
     public partial class Docente
     {

@@ -1,0 +1,32 @@
+﻿@page
+@model Proyecto.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    <link rel="stylesheet" href="~/css/estilosLogin.css" />
+
+}
+<link rel="stylesheet" href="~/css/estilosLogin.css" />
+
+<div id="login">
+    <div class="login-box">
+        <img class="avatar" src="img/logo.png" alt="Logo de FAzt">
+        <h1>Iniciar Sesion</h1>
+
+        <form method="post" role="form" class="form-horizontal">
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <label asp-for="Lg_login.Username" for="Usuario"></label>
+            <input asp-for="Lg_login.Username" type="text" placeholder="Nombre" />
+            <span class="alert-danger" asp-validation-for="Lg_login.Username"></span>
+
+            <label asp-for="Lg_login.Password" for="Contraseña"></label>
+            <input asp-for="Lg_login.Password" type="password" placeholder="Contraseña" />
+            <span class="alert-danger" asp-validation-for="Lg_login.Password"></span>
+
+            <input asp-page-handler="LogIn" type="submit"/>
+        </form>
+
+    </div>
+</div>

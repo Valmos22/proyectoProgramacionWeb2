@@ -1,0 +1,158 @@
+﻿@page
+@model IndexPageModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+
+<!--<table class="arriba">
+
+    <tbody class="tabla" style="color:red">
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a class="btn btn-secondary" asp-page="./TemaPages/Index">Crud Temas</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./DocentesPages/Index">Crud Docentes</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./EstudiantesPages/Index">Crud Estudiantes</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./GruposPages/Index">Crud Grupos</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./IntegracionPages/Index">Crud Integracion</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 228px; text-align: center">
+                <a asp-page="./EntregasPages/Index">Crud Entregas</a>
+            </td>
+        </tr>
+    </tbody>
+</table>-->
+
+
+<div class="container-full">
+    <!-- Nav -->
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container margin-left-nav">
+            <div class="row">
+                <div class="col-md-2">
+                    <!-- Navbar brand (Brainiac) y botón colapsable -->
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse"
+                                data-target="#navbar-main">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">Brand</a>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="navbar-collapse collapse" id="navbar-main">
+                        <!-- Navbar botones -->
+                        <ul class="nav navbar-nav horizontal mar-left">
+                            <li><a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a></li>
+                            <li><a href="miembros.html">¿Quiénes somos?</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<section class="container-full">
+
+    <!-- Main page -->
+    <div class="row" id="full-page">
+
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <div class="profile-sidebar">
+
+                <!-- User picture -->
+                <div class="profile-userpic">
+                    <img src="/wwwroot/Documento/IMG_20200421_163531_056.jpg" class="img-responsive img-circle border" alt="foto">
+                </div>
+
+                <!-- Sidebar title -->
+                <div class="profile-user">
+                    <div class="profile-name">User</div>
+                </div>
+
+                <!-- Sidebar menu -->
+                <nav class="profile-menu">
+                    <ul class="nav navbar vertical">
+
+
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-user"></i> Perfil</a>
+                        </li>
+
+
+                        @if (Model.V_tema)
+                        {
+                            <li>
+                                <a asp-page="./TemaPages/Index">Crud Temas</a>
+                            </li>
+                        }
+                        @if (Model.V_estudiante)
+                        {
+                            <li>
+                                <a asp-page="./EstudiantesPages/Index">Crud Estudiantes </a>
+                            </li>
+                        }
+                        @if (Model.V_asesor)
+                        {
+                            <li>
+                                <a asp-page="./DocentesPages/Index">Crud Asesores</a>
+                            </li>
+                        }
+                        @if (Model.V_grupo)
+                        {
+                            <li>
+                                <a asp-page="./GruposPages/Index">Crud Grupos</a>
+                            </li>
+                        }
+                        @if (Model.V_integracion)
+                        {
+                            <li>
+                                <a asp-page="./IntegracionPages/Index">Integracion</a>
+                            </li>
+                        }
+
+                        <li>
+                            <form asp-page="/Logout" method="post">
+                                <button class="nav-link text-dark"  type="submit">Salir</button>
+                            </form>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="col-md-10">
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,82 @@
+/**{
+    background-color: hsl(0, 0%, 100%);
+}*/
+
+head{
+    position: relative;
+}
+
+#img-header {
+    background-image: url(http://www.uniajc.edu.co/wp-content/uploads/2017/11/mi-campus-1.jpg);
+    width: 100%;
+    height: 470px;
+    background-size: cover;
+    background-position-y: 50%;
+}
+
+/*#section-1{
+    position: absolute;
+    width: 90%;
+    height: 200px;
+    /*background: rgb(199, 199, 202);
+    top: 400px;
+    left: 60px;
+}*/
+
+.img-section-1{
+    position: relative;
+    float: left;
+    height: 198px;
+    margin-right: 9px;
+    margin-left: 13px;
+    border-radius: 10px;
+    background: brown;
+    left: 47px;
+    top: -67px;
+}
+
+div img{
+    border-radius: 10px;
+}
+
+#section-2{
+
+    width: 100%;
+    height: 440px;
+    /*background: rgb(107, 107, 230);*/
+}
+
+#ima-section{
+    position: relative;
+    width: 29%;
+    height: 57%;
+    float: left;
+    left: 90px;
+    top: -26px;
+    margin: 10px;
+    /*background: rgb(230, 197, 107);*/
+}
+
+#informacion{
+    float: right;
+    position: relative;
+    width: 60%;
+    height: 57%;
+    top: -26px;
+    margin: 10px;
+    /*background: rgb(142, 230, 107);*/
+}
+
+#info{
+    position: relative;
+    width: 100%;
+    height: 30%;
+    top: 10px;
+}
+
+#info-link{
+    position: relative;
+    width: 20%;
+    height: 10%;
+    top: 90px;
+}
