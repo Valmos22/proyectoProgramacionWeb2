@@ -5,34 +5,132 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="arriba">
-<h1>Index</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Tema[0].Descripcion)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Tema) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container-full">
+    <!-- Nav -->
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container margin-left-nav">
+            <div class="row">
+                <div class="col-md-2">
+                    <!-- Navbar brand (Brainiac) y botón colapsable -->
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse"
+                                data-target="#navbar-main">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">Brand</a>
+                    </div>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="navbar-collapse collapse" id="navbar-main">
+                        <!-- Navbar botones -->
+                        <ul class="nav navbar-nav horizontal mar-left">
+                            <li><a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a></li>
+                            <li><a href="miembros.html">¿Quiénes somos?</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<section class="container-full">
+    <!-- Main page -->
+    <div class="row" id="full-page">
+        <!-- Sidebar -->
+        <div class="col-md-2">
+            <div class="profile-sidebar">
+                <!-- User picture -->
+                <div class="profile-userpic">
+                    <img src="img/antonio_jose_camacho.png" class="img-responsive border" alt="foto">
+                </div>
+                <!-- Sidebar title -->
+                <div class="profile-user">
+
+                </div>
+                <!-- Sidebar menu -->
+                <nav class="profile-menu">
+                    <ul class="nav navbar vertical">
+
+                        @if (Model.V_tema)
+                        {
+                            <li>
+                                <a asp-page="./TemaPages/Index">Temas</a>
+                            </li>
+                        }
+                        @if (Model.V_estudiante)
+                        {
+                            <li>
+                                <a asp-page="./EstudiantesPages/Index">Estudiantes </a>
+                            </li>
+                        }
+                        @if (Model.V_asesor)
+                        {
+                            <li>
+                                <a asp-page="./DocentesPages/Index">Asesores</a>
+                            </li>
+                        }
+                        @if (Model.V_grupo)
+                        {
+                            <li>
+                                <a asp-page="./GruposPages/Index">Grupos</a>
+                            </li>
+                        }
+                        @if (Model.V_integracion)
+                        {
+                            <li>
+                                <a asp-page="./IntegracionPages/Index">Integracion</a>
+                            </li>
+                        }
+
+                        <div class="col-md-2" style=" top: 300px; left: 56px; width: 19px;">
+                            <li>
+                                <form asp-page="/Logout" method="post">
+                                    <button class="btn btn-danger" type="submit">Salir</button>
+                                </form>
+                            </li>
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="arriba">
+    <div class="container" style="width: 100%; position: relative; top: 25%;">
+        <p>
+            <a class="btn btn-primary" asp-page="Create">Crear nuevo</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tema[0].Descripcion)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Tema)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            <a class="btn btn-info" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                            <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

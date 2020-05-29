@@ -83,13 +83,14 @@ ul.horizontal li {
 
 .profile-sidebar {
     background-color: rgb(35, 35, 35);
-    height: 92.5vh;
+    height: 80.5vh;
     border-right: 1px solid black;
     margin-top: 0 !important;
 }
 
 .profile-userpic {
     padding-top: 40px;
+    /*background-image:url(../img/antonio_jose_camacho.png)*/
 }
 
     .profile-userpic img {

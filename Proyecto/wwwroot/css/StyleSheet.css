@@ -3,6 +3,18 @@
     position: absolute;
     left: 185px;
     top: 53px;
-    width: 86%;
+    width: 85%;
     height: 465px;
 }
+
+#crear {
+    position: relative;
+    width: 50%;
+}
+
+.bot {
+    position: relative;
+    width: 50%;
+    margin-top: 10%;
+}
+

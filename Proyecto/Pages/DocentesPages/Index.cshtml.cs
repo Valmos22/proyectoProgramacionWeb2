@@ -15,16 +15,19 @@ namespace Proyecto.Pages.DocentesPages
     {
         private readonly Proyecto.Data.ProyectoPDCContext _context;
 
-        public IndexModel(Proyecto.Data.ProyectoPDCContext context)
+        public IndexModel(IHttpContextAccessor httpContextAccessor, Proyecto.Data.ProyectoPDCContext context)
         {
             _context = context;
-        }
+            _httpContextAccessor = httpContextAccessor;
 
-        public IList<Docente> Docente { get;set; }
+            V_tema = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_TEMA");
+            V_estudiante = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_ESTUDIANTE");
+            V_asesor = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_ASESOR");
+            V_entrega = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_ENTREGA");
+            V_grupo = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_GRUPO");
+            V_integracion = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_INTEGRACION");
 
-        public async Task OnGetAsync()
-        {
-            Docente = await _context.Docente.ToListAsync();
+            V_edit = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_EDIT");
         }
 
         //---------------------------------------------------------------------------
@@ -38,22 +41,7 @@ namespace Proyecto.Pages.DocentesPages
         private bool v_entrega;
         private bool v_grupo;
         private bool v_integracion;
-
         private bool v_edit;
-
-        public IndexModel(IHttpContextAccessor httpContextAccessor)
-        {
-            _httpContextAccessor = httpContextAccessor;
-
-            V_tema = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_TEMA");
-            V_estudiante = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_ESTUDIANTE");
-            V_asesor = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_ASESOR");
-            V_entrega = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_ENTREGA");
-            V_grupo = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_GRUPO");
-            V_integracion = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_INTEGRACION");
-
-            V_edit = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_EDIT");
-        }
 
 
         [BindProperty]
@@ -63,8 +51,16 @@ namespace Proyecto.Pages.DocentesPages
         public bool V_entrega { get => v_entrega; set => v_entrega = value; }
         public bool V_grupo { get => v_grupo; set => v_grupo = value; }
         public bool V_integracion { get => v_integracion; set => v_integracion = value; }
-
         public bool V_edit { get => v_edit; set => v_edit = value; }
+
+        public IList<Docente> Docente { get;set; }
+
+        public async Task OnGetAsync()
+        {
+            Docente = await _context.Docente.ToListAsync();
+        }
+
+        
 
     }
 }
