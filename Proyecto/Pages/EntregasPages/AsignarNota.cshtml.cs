@@ -10,13 +10,17 @@ using Microsoft.EntityFrameworkCore;
 using Proyecto.Data;
 using Proyecto.Entities;
 
-namespace Proyecto.Pages.DocentesPages
+
+namespace Proyecto.Pages.EntregasPages
 {
-    public class EditModel : PageModel
+    public class AsignarNotaModel : PageModel
     {
         private readonly Proyecto.Data.ProyectoPDCContext _context;
 
-        public EditModel(IHttpContextAccessor httpContextAccessor, Proyecto.Data.ProyectoPDCContext context)
+        //String cadenaConexion = "Data Source=(localdb)\\mssqllocaldb; Initial Catalog=ProyectoPDC; Integrated Security=True";
+
+
+        public AsignarNotaModel(IHttpContextAccessor httpContextAccessor, Proyecto.Data.ProyectoPDCContext context)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
@@ -56,7 +60,7 @@ namespace Proyecto.Pages.DocentesPages
         public bool V_edit { get => v_edit; set => v_edit = value; }
 
         [BindProperty]
-        public Docente Docente { get; set; }
+        public Entrega Entrega { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -65,49 +69,38 @@ namespace Proyecto.Pages.DocentesPages
                 return NotFound();
             }
 
-            Docente = await _context.Docente.FirstOrDefaultAsync(m => m.Id == id);
+            Entrega = await _context.Entrega
+                .Include(e => e.Grupo)
+                .Include(e => e.Integracion).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Docente == null)
+            if (Entrega == null)
             {
                 return NotFound();
             }
+            ViewData["GrupoId"] = new SelectList(_context.Grupo, "Id", "Id");
+            ViewData["IntegracionId"] = new SelectList(_context.Integracion, "Id", "Id");
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPost()
         {
-            if (!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                return Page();
-            }
+                var asignar = await _context.Entrega.FindAsync(Entrega.Id);
+                asignar.Nota = Entrega.Nota;
 
-            _context.Attach(Docente).State = EntityState.Modified;
-
-            try
-            {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DocenteExists(Docente.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage();
         }
 
-        private bool DocenteExists(int id)
+        private bool EntregaExists(int id)
         {
-            return _context.Docente.Any(e => e.Id == id);
+            return _context.Entrega.Any(e => e.Id == id);
         }
     }
 }

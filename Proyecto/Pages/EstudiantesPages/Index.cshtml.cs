@@ -28,6 +28,9 @@ namespace Proyecto.Pages.EstudiantesPages
             V_integracion = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_INTEGRACION");
 
             V_edit = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_EDIT");
+            V_crear = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_CREAR");
+            V_eliminar = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_ELIMINAR");
+            V_calificar = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_CALIFICAR");
         }
 
         //---------------------------------------------------------------------------
@@ -42,6 +45,9 @@ namespace Proyecto.Pages.EstudiantesPages
         private bool v_grupo;
         private bool v_integracion;
         private bool v_edit;
+        private bool v_crear;
+        private bool v_eliminar;
+        private bool v_calificar;
 
 
         [BindProperty]
@@ -51,6 +57,9 @@ namespace Proyecto.Pages.EstudiantesPages
         public bool V_entrega { get => v_entrega; set => v_entrega = value; }
         public bool V_grupo { get => v_grupo; set => v_grupo = value; }
         public bool V_integracion { get => v_integracion; set => v_integracion = value; }
+        public bool V_crear { get => v_crear; set => v_crear = value; }
+        public bool V_eliminar { get => v_eliminar; set => v_eliminar = value; }
+        public bool V_calificar { get => v_calificar; set => v_calificar = value; }
 
         public bool V_edit { get => v_edit; set => v_edit = value; }
 

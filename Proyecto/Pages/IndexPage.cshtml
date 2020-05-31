@@ -5,136 +5,150 @@
     ViewData["Title"] = "Home page";
 }
 
-
-
-<!--<table class="arriba">
-
-    <tbody class="tabla" style="color:red">
-        <tr>
-            <td style="width: 228px; text-align: center">
-                <a class="btn btn-secondary" asp-page="./TemaPages/Index">Crud Temas</a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 228px; text-align: center">
-                <a asp-page="./DocentesPages/Index">Crud Docentes</a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 228px; text-align: center">
-                <a asp-page="./EstudiantesPages/Index">Crud Estudiantes</a>
-            </td>
-        </tr>
-
-        <tr>
-            <td style="width: 228px; text-align: center">
-                <a asp-page="./GruposPages/Index">Crud Grupos</a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 228px; text-align: center">
-                <a asp-page="./IntegracionPages/Index">Crud Integracion</a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 228px; text-align: center">
-                <a asp-page="./EntregasPages/Index">Crud Entregas</a>
-            </td>
-        </tr>
-    </tbody>
-</table>-->
-
-
-<div class="container-full">
-    <!-- Nav -->
-    <nav class="navbar navbar-inverse navbar-static-top">
-        <div class="container margin-left-nav">
-            <div class="row">
-                <div class="col-md-2">
-                    <!-- Navbar brand (Brainiac) y botón colapsable -->
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" type="button" data-toggle="collapse"
-                                data-target="#navbar-main">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="../Pages/IndexPage.cshtml">PROYECTO</a>
-                    </div>
-                </div>
-
-                <div class="col-md-10">
-                    <div class="navbar-collapse collapse" id="navbar-main">
-                        <!-- Navbar botones -->
-                        <ul class="nav navbar-nav horizontal mar-left">
-                            <li><a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a></li>
-                            <li><a href="miembros.html">¿Quiénes somos?</a></li>
-                            <li><a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+<header class="">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-center">
+        <a class="navbar-brand" href="#">
+            <img src="http://www.uniajc.edu.co/wp-content/uploads/2016/11/logo-home.png" alt="Logo" style="width:40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            
+            <form class="form-inline" asp-page="/Logout" method="post" style="position: relative; left: 90%;">
+                <button class="btn btn-danger my-2 my-sm-0" type="submit">Cerrar sesion</button>
+            </form>
         </div>
     </nav>
-</div>
+</header>
 
 
-<section class="container-full">
-    <!-- Main page -->
-    <div class="row" id="full-page">
-        <!-- Sidebar -->
-        <div class="col-md-2">
-            <div class="profile-sidebar">
-                <!-- User picture -->
-                <div class="profile-userpic">
-                    <img src="img/antonio_jose_camacho.png" class="img-responsive border" alt="foto">
-                </div>
-                <!-- Sidebar title -->
-                <div class="profile-user">
-                    
-                </div>
-                <!-- Sidebar menu -->
-                <nav class="profile-menu">
-                    <ul class="nav navbar vertical">
-
-                        @if (Model.V_tema)
-                        {
-                            <li>
-                                <a asp-page="./TemaPages/Index">Temas</a>
-                            </li>
-                        }
-                        @if (Model.V_estudiante)
-                        {
-                            <li>
-                                <a asp-page="./EstudiantesPages/Index">Estudiantes </a>
-                            </li>
-                        }
-                        @if (Model.V_asesor)
-                        {
-                            <li>
-                                <a asp-page="./DocentesPages/Index">Asesores</a>
-                            </li>
-                        }
-                        @if (Model.V_grupo)
-                        {
-                            <li>
-                                <a asp-page="./GruposPages/Index">Grupos</a>
-                            </li>
-                        }
-                        @if (Model.V_integracion)
-                        {
-                            <li>
-                                <a asp-page="./IntegracionPages/Index">Integracion</a>
-                            </li>
-                        }
-                    </ul>
-                    <div class="col-md-2" style=" top: 300px; left: 56px; width: 19px;">
-                        <form asp-page="/Logout" method="post">
-                            <button class="btn btn-danger" type="submit">Cerrar sesion</button>
-                        </form>
-                    </div>
-                </nav>
+<div class="contenedor">
+    <aside class="aside-izq">
+        <div class="card">
+            <img class="card-img-top" src="http://www.uniajc.edu.co/wp-content/uploads/2020/04/AED-NOTICIA_Noticia.png" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">
+                    La Institución Universitaria Antonio José Camacho, UNIAJC,
+                    gracias a la aprobación del Consejo Directivo...
+                </p>
+                <a href="#" class="btn btn-outline-dark">Ver mas</a>
             </div>
         </div>
-    </div>
-</section>
+
+        <div class="card">
+            <img class="card-img-top" src="http://www.uniajc.edu.co/wp-content/uploads/2020/05/20200508-BECAS-II.png" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">
+                    El siguiente es el listado de los estudiantes que
+                    se postularon en el periodo 2019-2...
+                </p>
+                <a href="#" class="btn btn-outline-dark">Ver mas</a>
+            </div>
+        </div>
+    </aside>
+
+    <section class="section-der">
+        <article class="">
+            <div class="container" id="conte">
+                @if (Model.V_tema)
+                {
+                    <a asp-page="./TemaPages/Index">
+                        <div class="carta">
+                            <div class="card text-white bg-primary mb-0" style="max-width: 14rem;border-radius: 15px;">
+                                <div class="card-header">Temas</div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Gestionar temas...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+
+                @if (Model.V_estudiante)
+                {
+                    <a asp-page="./EstudiantesPages/Index">
+                        <div class="carta">
+                            <div class="card text-white bg-primary mb-0" style="max-width: 14rem;border-radius: 15px;">
+                                <div class="card-header">Estudiantes</div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Gestionar Estudiantes...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+                @if (Model.V_asesor)
+                {
+                    <a asp-page="./DocentesPages/Index">
+                        <div class="carta">
+                            <div class="card text-white bg-primary mb-0" style="max-width: 14rem;border-radius: 15px;">
+                                <div class="card-header">Asesores</div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Gestionar Asesores...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+                @if (Model.V_grupo)
+                {
+                    <a asp-page="./GruposPages/Index">
+                        <div class="carta">
+                            <div class="card text-white bg-primary mb-0" style="max-width: 14rem;border-radius: 15px;">
+                                <div class="card-header">Grupos</div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Gestionar Grupos...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+                @if (Model.V_integracion)
+                {
+                    <a asp-page="./IntegracionPages/Index">
+                        <div class="carta">
+                            <div class="card text-white bg-primary mb-0" style="max-width: 14rem;border-radius: 15px;">
+                                <div class="card-header">Integracion</div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Gestionar Integracion...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+                @if (Model.V_entrega)
+                {
+                    <a asp-page="./EntregasPages/Index">
+                        <div class="carta">
+                            <div class="card text-white bg-primary mb-0" style="max-width: 14rem;border-radius: 15px;">
+                                <div class="card-header">Entregas</div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Gestionar Entregas...
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </article>
+    </section>
+    <footer class="footer-aba">
+        <div class="footer-copyright text-center py-3">
+            © 2020 Copyright:
+            <a href="https://hvrecomen.firebaseapp.com/index.html">HEProyecto.com</a>
+        </div>
+    </footer>
+</div>

@@ -198,3 +198,5 @@ C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pag
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\Logout.cshtml.g.cs
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\InicioPague.cshtml.g.cs
 C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\IndexPage.cshtml.g.cs
+C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\EntregasPages\AsignarNota.cshtml.g.cs
+C:\Users\Nnh\source\repos\Sl_Proyecto\Proyecto\obj\Debug\netcoreapp3.1\Razor\Pages\EntregasPages\VerDoc.cshtml.g.cs

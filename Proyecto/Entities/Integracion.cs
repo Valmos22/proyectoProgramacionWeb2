@@ -12,6 +12,8 @@ namespace Proyecto.Entities
 
         public int Id { get; set; }
         public string Nombre { get; set; }
+
+
         public string Asignatura1 { get; set; }
         public string Asignatura2 { get; set; }
         public string Asignatura3 { get; set; }

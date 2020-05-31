@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Proyecto.Data;
 using Proyecto.Entities;
 
@@ -18,7 +20,15 @@ namespace Proyecto.Pages.EntregasPages
     {
         private readonly Proyecto.Data.ProyectoPDCContext _context;
 
-        public CreateModel(IHttpContextAccessor httpContextAccessor, Proyecto.Data.ProyectoPDCContext context)
+        private IHostingEnvironment ihostingEnvironment;
+
+        public string FileName { get; set; }
+
+        String cadenaConexion = "Data Source=(localdb)\\mssqllocaldb; Initial Catalog=ProyectoPDC; Integrated Security=True";
+
+
+        public CreateModel(IHttpContextAccessor httpContextAccessor, Proyecto.Data.ProyectoPDCContext  context, IHostingEnvironment ihostingEnvironment
+)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
@@ -31,6 +41,9 @@ namespace Proyecto.Pages.EntregasPages
             V_integracion = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_INTEGRACION");
 
             V_edit = Proyecto.Code.Utilidades.TienePermisos(_session.GetString("Permissions"), "V_EDIT");
+
+            this.ihostingEnvironment = ihostingEnvironment;
+
         }
 
         //---------------------------------------------------------------------------
@@ -75,8 +88,41 @@ namespace Proyecto.Pages.EntregasPages
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        [HttpPost]
+        public async Task<IActionResult> OnPostAsync(IFormFile photo)
         {
+
+            byte[] imagenOriginal = null;
+            string base64String = " ";
+            string nombreArchivo = " ";
+            string ruta = " ";
+
+            if (photo != null)
+            {
+
+                long Tamanio = photo.Length;
+                imagenOriginal = new byte[Tamanio];
+
+                base64String = Convert.ToBase64String(imagenOriginal, 0, imagenOriginal.Length);
+                Console.WriteLine(base64String);
+                Console.WriteLine(photo.ContentType);
+                Console.WriteLine(photo.FileName);
+                Console.WriteLine(imagenOriginal.GetValue(32));
+                //byte number;
+
+                FileName = photo.FileName;
+                var path = Path.Combine(ihostingEnvironment.WebRootPath, "Documento", FileName);
+                var stream = new FileStream(path, FileMode.Create);
+                await photo.CopyToAsync(stream);
+
+                nombreArchivo = FileName;
+                ruta = path;
+
+
+            }
+            //number = Convert.ToInt64();        
+
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -85,8 +131,28 @@ namespace Proyecto.Pages.EntregasPages
             _context.Entrega.Add(Entrega);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            if (photo != null)
+            {
 
+                SqlConnection conexionSQL = new SqlConnection(cadenaConexion);
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "UPDATE Entrega SET Documento = @Documento, NombreArchivo = @NombreArchivo,  RUTA = @RUTA WHERE Id=@Id";
+                //cmd.CommandText = "INSERT INTO Entrega(Documento) VALUES (@Documento) SELECT * FROM WHERE [Id]=@Id";
+                cmd.Parameters.AddWithValue("@Id", Entrega.Id);
+                cmd.Parameters.Add("@Documento", SqlDbType.VarBinary).Value = imagenOriginal;
+                cmd.Parameters.Add("@NombreArchivo", SqlDbType.VarChar).Value = nombreArchivo;
+                cmd.Parameters.Add("@Ruta", SqlDbType.VarChar).Value = ruta;
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = conexionSQL;
+                conexionSQL.Open();
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            //  byte[] fileBytes = System.IO.File.ReadAllBytes(base64String);
+            return RedirectToPage("./Index");
 
         }
 

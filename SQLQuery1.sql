@@ -1,1 +1,1 @@
-﻿ALTER TABLE [dbo].[Tema] ALTER COLUMN Descripcion varchar(100) NULL
+﻿ALTER TABLE [dbo].[Entrega]ADD NombreArchivo VARCHAR(100) NULL, Ruta VARCHAR(100) NULL ;

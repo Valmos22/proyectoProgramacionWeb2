@@ -2,31 +2,77 @@
 @model Proyecto.Pages.LoginModel
 @{
     ViewData["Title"] = "Login";
-    <link rel="stylesheet" href="~/css/estilosLogin.css" />
+
 
 }
-<link rel="stylesheet" href="~/css/estilosLogin.css" />
 
-<div id="login">
-    <div class="login-box">
-        <img class="avatar" src="img/logo.png" alt="Logo de FAzt">
-        <h1>Iniciar Sesion</h1>
+<header class="">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-center">
+        <a class="navbar-brand" href="#">
+            <img src="http://www.uniajc.edu.co/wp-content/uploads/2016/11/logo-home.png" alt="Logo" style="width:40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        </div>
+    </nav>
+</header>
 
-        <form method="post" role="form" class="form-horizontal">
-            @Html.AntiForgeryToken()
+<div class="contenedor">
+    <aside class="aside-izq">
+        <div class="card">
+            <img class="card-img-top" src="http://www.uniajc.edu.co/wp-content/uploads/2020/04/AED-NOTICIA_Noticia.png" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">
+                    La Institución Universitaria Antonio José Camacho, UNIAJC,
+                    gracias a la aprobación del Consejo Directivo...
+                </p>
+                <a href="#" class="btn btn-outline-dark">Ver mas</a>
+            </div>
+        </div>
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card">
+            <img class="card-img-top" src="http://www.uniajc.edu.co/wp-content/uploads/2020/05/20200508-BECAS-II.png" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text">
+                    El siguiente es el listado de los estudiantes que
+                    se postularon en el periodo 2019-2...
+                </p>
+                <a href="#" class="btn btn-outline-dark">Ver mas</a>
+            </div>
+        </div>
+    </aside>
 
-            <label asp-for="Lg_login.Username" for="Usuario"></label>
-            <input asp-for="Lg_login.Username" type="text" placeholder="Nombre" />
-            <span class="alert-danger" asp-validation-for="Lg_login.Username"></span>
+    <section class="section-der">
+        <article class="container">
+            <div id="login">
+                <div class="login-box">
+                    <img class="avatar" src="img/escudo.jpg" alt="Logo de FAzt">
+                    <h1>Iniciar Sesion</h1>
+                    <form method="post" role="form" class="form-horizontal">
+                        @Html.AntiForgeryToken()
 
-            <label asp-for="Lg_login.Password" for="Contraseña"></label>
-            <input asp-for="Lg_login.Password" type="password" placeholder="Contraseña" />
-            <span class="alert-danger" asp-validation-for="Lg_login.Password"></span>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <input asp-page-handler="LogIn" type="submit"/>
-        </form>
+                        <label asp-for="Lg_login.Username" for="Usuario"></label>
+                        <input asp-for="Lg_login.Username" type="text" placeholder="Nombre" />
+                        <span class="alert-danger" asp-validation-for="Lg_login.Username"></span>
 
-    </div>
+                        <label asp-for="Lg_login.Password" for="Contraseña"></label>
+                        <input asp-for="Lg_login.Password" type="password" placeholder="Contraseña" />
+                        <span class="alert-danger" asp-validation-for="Lg_login.Password"></span>
+
+                        <input class="btn btn-outline-dark" asp-page-handler="LogIn" type="submit" />
+                    </form>
+                </div>
+            </div>
+        </article>
+    </section>
+    <footer class="footer-aba">
+        <div class="footer-copyright text-center py-3">
+            © 2020 Copyright:
+            <a href="https://hvrecomen.firebaseapp.com/index.html">HEProyecto.com</a>
+        </div>
+    </footer>
 </div>

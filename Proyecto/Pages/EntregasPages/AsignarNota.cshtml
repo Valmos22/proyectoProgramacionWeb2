@@ -1,8 +1,7 @@
 ﻿@page
-@model IndexModel
-
+@model AsignarNotaModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "AsignarNota";
 }
 
 <header class="">
@@ -85,78 +84,30 @@
     </aside>
 
     <section class="section-der">
-        <article class="container" style=" position: absolute; top: 20%;">
-            <table class="table table-striped" id="ExampleDatatable">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Grupo[0].Estudiante1)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Grupo[0].Estudiante2)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Grupo[0].Estudiante3)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Grupo[0].Active)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Grupo[0].Docente)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Grupo[0].Tema)
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Grupo)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estudiante1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estudiante2)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estudiante3)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Active)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Docente.Nombre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Tema.Descripcion)
-                            </td>
-                            <td>
-                                @if (Model.V_edit)
-                                {
-                                    <a class="btn btn-info" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
-                                }
+        <article class="container" style=" position: absolute;">
+            <h1 class="text-center">Calificar Entrega</h1>
+            <div class="container" style="position: relative; width: 50%; margin-top:10%">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Entrega.Id" />
 
-                                <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    <div class="form-group row">
+                        <label asp-for="Entrega.Nota" class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-7">
+                            <input  asp-for="Entrega.Nota" class="form-control" />
+                            <span asp-validation-for="Entrega.Nota" class="text-danger"></span>
+                        </div>
+                    </div>
 
-                                @if (Model.V_eliminar)
-                                {
-                                    <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-                                }
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            @if (Model.V_crear)
-            {
-                <p>
-                    <a class="btn btn-primary" asp-page="Create">Crear nuevo</a>
-                </p>
-            }
+                    <div class="form-group">
+                        <input type="submit" value="Aceptar" class="btn btn-primary" />
+                        <a class="btn btn-danger" asp-page="Index">Cancelar</a>
+                    </div>
+                </form>
+            </div>
         </article>
     </section>
+
     <footer class="footer-aba">
         <div class="footer-copyright text-center py-3">
             © 2020 Copyright:
@@ -167,16 +118,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-
-
-    <script>
-$(document).ready(function () {
-        $('#ExampleDatatable').DataTable();
-    });</script>
-
-
 }
